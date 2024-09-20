@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP, City, and Country Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your IP, City, and Country</h1>
+    </header>
+    <main>
+        <h3 id="ip">IP Address: Loading...</h3>
+        <h3 id="city">City: Loading...</h3>
+        <h3 id="country">Country: Loading...</h3>
+    </main>
+
+    <script>
+        // Fetch user's IP address, city, and country information using ipinfo.io
+        fetch('https://ipinfo.io/json?token=YOUR_TOKEN_HERE')  // Replace YOUR_TOKEN_HERE with your token from ipinfo.io
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ip').textContent = "IP Address: " + data.ip;
+            document.getElementById('city').textContent = "City: " + data.city;
+            document.getElementById('country').textContent = "Country: " + data.country;
+        })
+        .catch(error => {
+            console.error("Error fetching IP data:", error);
+            document.getElementById('ip').textContent = "IP Address: Error";
+            document.getElementById('city').textContent = "City: Error";
+            document.getElementById('country').textContent = "Country: Error";
+        });
+    </script>
+</body>
+</html>
