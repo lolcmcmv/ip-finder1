@@ -30,10 +30,11 @@
         <h3 id="ip">IP Address: Loading...</h3>
         <h3 id="city">City: Loading...</h3>
         <h3 id="country">Country: Loading...</h3>
+        <p id="error-message" style="color: red;"></p>
     </main>
 
     <script>
-        const apiUrl = 'https://ipinfo.io/json?token=cc9cfa32e558bd'; // Your API token
+        const apiUrl = 'https://ipinfo.io/json?token=cc9cfa32e558bd';
 
         fetch(apiUrl)
             .then(response => {
@@ -52,6 +53,7 @@
                 document.getElementById('ip').textContent = "IP Address: Error fetching data";
                 document.getElementById('city').textContent = "City: Error fetching data";
                 document.getElementById('country').textContent = "Country: Error fetching data";
+                document.getElementById('error-message').textContent = "Error: " + error.message;
             });
     </script>
 </body>
